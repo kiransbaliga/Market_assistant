@@ -1,5 +1,5 @@
 
-# Flask App Template
+# Market Assistant
 
 ### Installation
 

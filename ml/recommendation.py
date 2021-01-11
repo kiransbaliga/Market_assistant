@@ -1,7 +1,12 @@
 import pandas as pd
 import numpy as np
+import os
+
 def get_recommendations(id):
-    orders = pd.read_csv("app/ML part/Data/productinfo.csv")
+    # orders = pd.read_csv("Data/productinfo.csv")
+    orders = pd.read_csv(os.path.join(os.path.abspath(os.path.dirname(__file__)), "Data/productinfo.csv"))
+    
+    
     Orderproduct = orders[orders.product_id == id].order_id.unique()
     orderstoberecommended = orders[orders.order_id.isin(Orderproduct)]
     productsthataccompany = orderstoberecommended[orderstoberecommended.product_id != id]
@@ -10,7 +15,7 @@ def get_recommendations(id):
     instancesofproduct = pd.DataFrame(instanceofproductsthataccompany)
     instancesofproduct["frequency"] = instancesofproduct["instances"]/numordersforproduct    
     recommended_products = pd.DataFrame(instancesofproduct.sort_values("frequency", ascending=False).head(3))
-    products = pd.read_csv("app/ML part/Data/Product.csv")
+    products = pd.read_csv(os.path.join(os.path.abspath(os.path.dirname(__file__)), "Data/productinfo.csv"))
     recommended_products = pd.merge(recommended_products, products, on="product_id")
     return recommended_products.to_json(orient="table")
 

@@ -4,7 +4,7 @@ from sklearn.tree import DecisionTreeClassifier
 import pickle
 from sklearn.model_selection import train_test_split
 
-model = pickle.load(open('app/ML part/model.pkl','rb'))
+model = pickle.load(open('model.pkl','rb'))
 """Quality - Brand - Price - Offers (on scale from 1-3, both inclusive)
     the values of quality,brand price and offers must be changed accordingly from the survey!!!
 

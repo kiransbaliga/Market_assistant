@@ -137,5 +137,10 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+
+# IDE files
+.idea/
+
 # DB
 *.db
+

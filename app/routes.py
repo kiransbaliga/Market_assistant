@@ -4,6 +4,7 @@ from app.models import User
 import uuid
 import jwt
 from functools import wraps
+from ml.predictor import predictor
 
 def token_required(f):
     @wraps(f)
@@ -132,6 +133,7 @@ def delete_user(current_user, user_id):
 
     return jsonify({"error": "cannot perform that function!"}), 403
 
+
 @app.route('/api/login')
 def login():
     auth = request.authorization
@@ -151,13 +153,16 @@ def login():
     return make_response("could not verify", 401, {'WWW-Authenticate': 'Basic realm="login required!"'})
 
 
-@app.route('/api/logout')
+@app.route('/api/ml/shoppinglist')
 @token_required
-def logout(current_user):
-    pass
-
-
-
+def get_shopping_list(current_user):
+    quality = current_user.ratings.quality
+    brand = current_user.ratings.brand
+    price = current_user.ratings.price
+    offers = current_user.ratings.offers
+    
+    res = predictor(quality, brand, price, offers)
+    return jsonify({"class": res})
 
 
 

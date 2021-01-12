@@ -12,6 +12,8 @@ class User(db.Model):
     password = db.Column(db.String(80), nullable=False)
     admin = db.Column(db.Integer, default=False)
 
+    ratings = db.relationship('Rating', backref='user', uselist=False)
+
     def set_password_hash(self, password):
         assert User.validate_password(password), "error:invalid password"
         self.password = generate_password_hash(password, method="sha256")
@@ -42,3 +44,13 @@ class User(db.Model):
             return False
         else:
             return True
+
+
+class Rating(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    quality = db.Column(db.Integer, nullable=False)
+    brand = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    offers = db.Column(db.Integer, nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

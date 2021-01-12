@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:markus/Objects/user.dart';
+import 'package:markus/to_Database/dbMethods.dart';
 import 'package:markus/values.dart';
 
 class Account extends StatelessWidget {
@@ -34,8 +35,12 @@ class Account extends StatelessWidget {
                     image: AssetImage('assets/accountImage.png'),
                   ),
                 ),
-                User().getname() == null
-                    ? Row(
+                DbMethods().signincheck()
+                    ? Text(
+                        DbMethods().getname(),
+                        style: TextStyle(color: Colors.black, fontSize: 30),
+                      )
+                    : Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           FlatButton(
@@ -65,10 +70,6 @@ class Account extends StatelessWidget {
                             color: colors[3],
                           )
                         ],
-                      )
-                    : Text(
-                        User().getname(),
-                        style: TextStyle(color: Colors.black, fontSize: 30),
                       )
               ],
             ),

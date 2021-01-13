@@ -23,6 +23,13 @@ Future<void> openLocalStorage() async {
   );
 }
 
+bool isdatabaseopen() {
+  if (database == null)
+    return false;
+  else
+    return database.isOpen;
+}
+
 void closedb() async {
   await database.close();
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
+//packages
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 
 //other files
 import 'package:markus/Components/homeScreenItem.dart';
@@ -91,6 +94,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Color(0xff30442e),
       body: CustomScrollView(
         slivers: [
           MySliverAppBar(),
@@ -118,9 +122,20 @@ class HomePage extends StatelessWidget {
                     children: [
                       Text(
                         'Recommended for you...',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black //Colors.white.withOpacity(0.9)
+                            ),
                       ),
-                      FlatButton(onPressed: () {}, child: Text('See All')),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Text(
+                          'See All',
+                          style: TextStyle(
+                              color: Colors.black //white.withOpacity(0.9)
+                              ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -140,9 +155,14 @@ class HomePage extends StatelessWidget {
                     children: [
                       Text(
                         'Most popular...',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                            fontSize: 18, color: Colors.white.withOpacity(0.9)),
                       ),
-                      FlatButton(onPressed: () {}, child: Text('See All')),
+                      FlatButton(
+                          onPressed: () {},
+                          child: Text('See All',
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9)))),
                     ],
                   ),
                 ),
@@ -163,10 +183,16 @@ class HomePage extends StatelessWidget {
                       Expanded(
                         child: Text(
                           'Based on your recent activity...',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white.withOpacity(0.9)),
                         ),
                       ),
-                      FlatButton(onPressed: () {}, child: Text('See All')),
+                      FlatButton(
+                          onPressed: () {},
+                          child: Text('See All',
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9)))),
                     ],
                   ),
                 ),
@@ -186,9 +212,14 @@ class HomePage extends StatelessWidget {
                     children: [
                       Text(
                         'Latest on market...',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                            fontSize: 18, color: Colors.white.withOpacity(0.9)),
                       ),
-                      FlatButton(onPressed: () {}, child: Text('See All')),
+                      FlatButton(
+                          onPressed: () {},
+                          child: Text('See All',
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9)))),
                     ],
                   ),
                 ),
@@ -208,9 +239,14 @@ class HomePage extends StatelessWidget {
                     children: [
                       Text(
                         'Discover something new...',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                            fontSize: 18, color: Colors.white.withOpacity(0.9)),
                       ),
-                      FlatButton(onPressed: () {}, child: Text('See All')),
+                      FlatButton(
+                          onPressed: () {},
+                          child: Text('See All',
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9)))),
                     ],
                   ),
                 ),

@@ -8,9 +8,12 @@ class DbMethods {
   String _token = '', _userid = '', _name = '', _email = '', _username = '';
   void loginuser(String email, String password) async {
     String basicAuth = 'Basic ' + base64Encode(utf8.encode('$email:$password'));
+    print('check 2 $basicAuth');
     Response r =
         await get(url + '/api/login', headers: {'authorization': basicAuth});
 
+    print(r.statusCode);
+    print(r);
     Map data = json.decode(r.body);
 
     Response detailsresponse = await get(
@@ -49,23 +52,25 @@ class DbMethods {
   }
 
   Future<void> initialise() async {
-    print('called');
-    await openLocalStorage();
-    List<Map> m = await getfromsql();
-    if (m != null) {
-      if (m.length == 0) {
+    if (!isdatabaseopen()) {
+      print('called');
+      await openLocalStorage();
+      List<Map> m = await getfromsql();
+      if (m != null) {
+        if (m.length == 0) {
+          _token = '';
+          _userid = '';
+          _name = '';
+        } else {
+          _token = m[0]['token'];
+          _userid = m[0]['user_id'];
+          _name = m[0]['name'];
+        }
+      } else {
         _token = '';
         _userid = '';
         _name = '';
-      } else {
-        _token = m[0]['token'];
-        _userid = m[0]['user_id'];
-        _name = m[0]['name'];
       }
-    } else {
-      _token = '';
-      _userid = '';
-      _name = '';
     }
   }
 
@@ -74,6 +79,8 @@ class DbMethods {
   }
 
   bool signincheck() {
+    print('token:$_token');
+    print(_token != '');
     return _token != '';
   }
 

@@ -19,13 +19,16 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
       floating: true,
       actions: [
         FlatButton(
-          shape: CircleBorder(),
-          child: Hero(
-            tag: 'account',
-            child: Image(
-              height: 30,
-              width: 30,
-              image: AssetImage('assets/accountImage.png'),
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            maxRadius: 15,
+            child: Hero(
+              tag: 'account',
+              child: Image(
+                height: 30,
+                width: 30,
+                image: AssetImage('assets/accountImage.png'),
+              ),
             ),
           ),
           onPressed: () {
@@ -33,7 +36,7 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
           },
         ),
         IconButton(
-            icon: Icon(Icons.menu, color: Colors.black, size: 30),
+            icon: Icon(Icons.menu, color: Colors.white, size: 30),
             onPressed: () {
               Navigator.of(context).push(PageRouteBuilder(
                   pageBuilder: (context, animation, anotherAnimation) {
@@ -61,19 +64,21 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
               BorderRadius.vertical(bottom: Radius.elliptical(250, 40))),
       expandedHeight: 250,
       flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
-        title: Text(
-          "Hey, I am Markus",
-          style: TextStyle(color: Colors.black),
-        ),
-        background: Container(
-            child: Center(
-                child: Icon(
-          Icons.face_retouching_natural,
-          color: colors[2],
-          size: 80,
-        ))),
-      ),
+          centerTitle: true,
+          title: Text(
+            "Hey, I am Markus",
+            style: TextStyle(color: Colors.white),
+          ),
+          background: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      'assets/face.gif',
+                    ),
+                    fit: BoxFit.cover),
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.elliptical(250, 40))),
+          )),
     );
   }
 }

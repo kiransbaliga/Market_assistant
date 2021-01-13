@@ -11,7 +11,7 @@ class OfferItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(8),
-      color: colors[3],
+      color: Color(0xffc5c5c5),
       child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -28,7 +28,7 @@ class OfferItem extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
                     Text(
                       '${item.offer.ceil()}% Off',

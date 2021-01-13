@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //other files
 import 'package:markus/Objects/user.dart';
 import 'package:markus/cities.dart';
+import 'package:markus/to_Database/dbMethods.dart';
 import 'package:markus/values.dart';
 
 //packages
@@ -18,9 +19,10 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-  void _login() {
+  void _signin() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
+      DbMethods().signupuser(_name, _email, 'ithanuuser', _password);
       Navigator.pop(context);
     } else
       print("Fail");
@@ -113,7 +115,7 @@ class _SigninState extends State<Signin> {
                         ),
                         color: colors[1],
                         onPressed: () {
-                          _login();
+                          _signin();
                         },
                       )
                     ],

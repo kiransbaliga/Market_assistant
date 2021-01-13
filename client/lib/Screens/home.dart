@@ -6,6 +6,7 @@ import 'package:markus/Components/homeScreenItem.dart';
 import 'package:markus/Components/offerItem.dart';
 import 'package:markus/Components/sliverAppBar.dart';
 import 'package:markus/Objects/itemclass.dart';
+import 'package:markus/to_Database/dbMethods.dart';
 import 'package:markus/values.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
         price: 299,
         offer: 10,
         image:
-            'https://manjilas.com/sites/default/files/imported-images/img_4929171_1508412046.png'),
+            'https://www.pacificfoods.com/wp-content/uploads/2019/03/Organic-Chicken-Wild-Rice-Soup-17.6oz-1.png'),
     Item(
         name: 'Delhi Basmathi Rice 5 Kg',
         price: 20,
@@ -60,7 +61,7 @@ class HomePage extends StatelessWidget {
         price: 299,
         offer: 10,
         image:
-            'https://manjilas.com/sites/default/files/imported-images/img_4929171_1508412046.png'),
+            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
     Item(
         name: 'Delhi Basmathi Rice 5 Kg',
         price: 20,
@@ -86,6 +87,7 @@ class HomePage extends StatelessWidget {
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png')
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,9 +160,11 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Based on your recent activity...',
-                        style: TextStyle(fontSize: 18),
+                      Expanded(
+                        child: Text(
+                          'Based on your recent activity...',
+                          style: TextStyle(fontSize: 18),
+                        ),
                       ),
                       FlatButton(onPressed: () {}, child: Text('See All')),
                     ],

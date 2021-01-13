@@ -29,7 +29,12 @@
 		FLASK_ENV=development
 		FLASK_APP=market.py
 
-#### Then, run the application:
+#### Make Migrations
+
+    $ flask db migrate
+    $ flask db upgrade
+
+#### Then, run the application
 
 	$ flask run
 

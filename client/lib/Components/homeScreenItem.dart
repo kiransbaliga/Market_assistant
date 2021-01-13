@@ -10,7 +10,7 @@ class HomeScreenItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: colors[3],
+      color: Color(0xffc5c5c5),
       child: Container(
           width: 170,
           decoration: BoxDecoration(
@@ -28,7 +28,8 @@ class HomeScreenItem extends StatelessWidget {
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(
+                          fontSize: 15, color: Colors.white.withOpacity(0.9)),
                     ),
                   )),
               Expanded(
@@ -38,14 +39,15 @@ class HomeScreenItem extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: '₹${item.price.floor()}  ',
-                        style: TextStyle(fontSize: 25, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: 25, color: Colors.white.withOpacity(0.9)),
                       ),
                       TextSpan(
                         text:
                             '₹${((100 / (100 - item.offer)) * item.price).ceil()}',
                         style: TextStyle(
                             decoration: TextDecoration.lineThrough,
-                            color: Colors.grey[700]),
+                            color: Colors.grey[500]),
                       ),
                       TextSpan(
                         text: '  ${item.offer.floor()} % Off',

@@ -71,6 +71,7 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
           ),
           background: Container(
             decoration: BoxDecoration(
+                
                 image: DecorationImage(
                     image: AssetImage(
                       'assets/face.gif',

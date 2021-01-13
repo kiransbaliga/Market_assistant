@@ -11,10 +11,14 @@ class OfferItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(8),
-      color: Color(0xffc5c5c5),
+      color: Colors.black26,
       child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
+           
+             
+               
+            
           ),
           padding: EdgeInsets.all(8),
           child: Row(
@@ -28,7 +32,7 @@ class OfferItem extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black, fontSize: 18),
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Text(
                       '${item.offer.ceil()}% Off',
@@ -41,12 +45,12 @@ class OfferItem extends StatelessWidget {
                             '₹${((100 / (100 - item.offer)) * item.price).ceil()} ',
                         style: TextStyle(
                             decoration: TextDecoration.lineThrough,
-                            color: Colors.grey[700],
+                            color: Colors.grey[500],
                             fontSize: 23),
                       ),
                       TextSpan(
                         text: '  ₹${item.price.floor()}  ',
-                        style: TextStyle(fontSize: 25, color: Colors.black),
+                        style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
                     ])),
                     FlatButton(

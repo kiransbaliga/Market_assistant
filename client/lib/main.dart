@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import 'package:markus/Screens/account.dart';
 import 'package:markus/Screens/home.dart';
 import 'package:markus/Screens/login.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Markus',
       theme: ThemeData(
         fontFamily: 'Poppins',
-        primarySwatch: Colors.green,
+        // primarySwatch: Colors.black,
         primaryTextTheme: TextTheme(bodyText1: TextStyle(color: Colors.white)),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

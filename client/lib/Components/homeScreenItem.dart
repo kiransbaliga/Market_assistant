@@ -10,7 +10,7 @@ class HomeScreenItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color(0xffc5c5c5),
+      color: Colors.black26,
       child: Container(
           width: 170,
           decoration: BoxDecoration(

@@ -1,6 +1,6 @@
 from flask import render_template, jsonify, request, make_response
 from app import app, db
-from app.models import User
+from app.models import User, Rating
 import uuid
 import jwt
 from functools import wraps
@@ -165,10 +165,56 @@ def get_shopping_list(current_user):
     return jsonify({"class": res})
 
 
+@app.route('/api/user/rating', methods=['POST'])
+@token_required
+def set_rating(current_user):
+    args = request.get_json()
+    required = ['quality', 'brand', 'price', 'offers']
+
+    for r in required:
+        if not args.get(r):
+            return jsonify({"error": f"missing argument [{r}]"})
+
+    try:
+        rating = Rating(quality=args['quality'], brand=args['brand'], price=args['price'], offers=args['offers'])
+        current_user.ratings = rating
+        db.session.add(rating)
+        db.session.commit()
+
+    except AssertionError as e:
+        msg = str(e).split(":")[1]
+        return jsonify({"error": msg})
+    except Exception as e:
+        return jsonify({"error": "invalid data"})
+
+    output = {
+        'username': current_user.username,
+        'quality': rating.quality,
+        'brand': rating.brand,
+        'price': rating.price,
+        'offers': rating.offers
+    }
+
+    return jsonify({"message": "rating added!", "output": output})
 
 
+@app.route('/api/user/promote/<user_id>', methods=['PUT'])
+@token_required
+def promote_user(current_user, user_id):
+    user = User.query.filter_by(user_id=user_id).first()
+    if not user:
+        return jsonify({"error": "user not found!"}), 404
 
-
+    user.admin = True
+    db.session.commit()
+    output = {
+        'username': user.username,
+        'user_id': user.user_id,
+        'name': user.name,
+        'email': user.email,
+        'admin': user.admin
+    }
+    return jsonify({"message": "user promoted", "user": output})
 
 
 

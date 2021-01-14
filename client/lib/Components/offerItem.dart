@@ -11,14 +11,10 @@ class OfferItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(8),
-      color: Colors.black26,
+      color: Colors.black,
       child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-           
-             
-               
-            
           ),
           padding: EdgeInsets.all(8),
           child: Row(
@@ -41,14 +37,14 @@ class OfferItem extends StatelessWidget {
                     RichText(
                         text: TextSpan(children: [
                       TextSpan(
-                        text: '₹${(item.cost).ceil()} ',
+                        text: '₹${(item.cost).ceil()}',
                         style: TextStyle(
                             decoration: TextDecoration.lineThrough,
                             color: Colors.grey[500],
                             fontSize: 23),
                       ),
                       TextSpan(
-                        text: '  ₹${item.price.floor()}  ',
+                        text: '   ₹${item.price.floor()}  ',
                         style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
                     ])),

@@ -19,7 +19,7 @@ class HomeScreenItem extends StatelessWidget {
         ));
       },
       child: Card(
-        color: Color(0xffc5c5c5),
+        color: Colors.black,
         child: Container(
             width: 170,
             decoration: BoxDecoration(

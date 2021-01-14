@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    backgroundColor: Color(0xff248f24),
+      backgroundColor: Color(0xff248f24),
       body: CustomScrollView(
         slivers: [
           MySliverAppBar(),
@@ -105,7 +105,7 @@ class HomePage extends StatelessWidget {
               children: [
                 SizedBox(height: 20),
                 Container(
-                    color: Color(0xff1c1c1c),
+                    // color: Color(0xff1c1c1c),
                     height: 200,
                     child: Swiper(
                       itemCount: _offers.length,
@@ -125,23 +125,21 @@ class HomePage extends StatelessWidget {
                         'Recommended for you...',
                         style: TextStyle(
                             fontSize: 18,
-                            color: Colors.white.withOpacity(0.99)
-                            ),
+                            color: Colors.white.withOpacity(0.99)),
                       ),
                       FlatButton(
                         onPressed: () {},
                         child: Text(
                           'See All',
-                          style: TextStyle(
-                              color: Colors.white.withOpacity(0.9)
-                              ),
+                          style:
+                              TextStyle(color: Colors.white.withOpacity(0.9)),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  color: Color(0xff1c1c1c),
+                    // color: Color(0xff1c1c1c),
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -169,7 +167,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Color(0xff1c1c1c),
+                    // color: Color(0xff1c1c1c),
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -200,7 +198,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Color(0xff1c1c1c),
+                    // color: Color(0xff1c1c1c),
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -228,7 +226,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Color(0xff1c1c1c),
+                    color: Color(0xff1c1c1c),
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -256,7 +254,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Color(0xff1c1c1c),
+                    color: Color(0xff1c1c1c),
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,

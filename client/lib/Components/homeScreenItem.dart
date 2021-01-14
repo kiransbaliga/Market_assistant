@@ -12,13 +12,11 @@ class HomeScreenItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return ItemDetail(item);
-            },
-          ),
-        );
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) {
+            return ItemDetail(item);
+          },
+        ));
       },
       child: Card(
         color: Color(0xffc5c5c5),

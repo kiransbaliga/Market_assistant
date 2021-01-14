@@ -63,8 +63,8 @@ def create_user():
         'name': user.name,
         'email': user.email
     }
-
-    return jsonify({"message": "user created!", "user": output})
+    token = jwt.encode({'user_id': user.user_id}, app.config.get('SECRET_KEY'), algorithm="HS256")
+    return jsonify({"message": "user created!", "user": output, "token":token})
 
 
 @app.route('/api/user')
@@ -153,7 +153,7 @@ def login():
     return make_response("could not verify", 401, {'WWW-Authenticate': 'Basic realm="login required!"'})
 
 
-@app.route('/api/ml/shoppinglist')
+@app.route('/api/user/shoppinglist')
 @token_required
 def get_shopping_list(current_user):
     quality = current_user.ratings.quality
@@ -188,7 +188,6 @@ def set_rating(current_user):
         return jsonify({"error": "invalid data"})
 
     output = {
-        'username': current_user.username,
         'quality': rating.quality,
         'brand': rating.brand,
         'price': rating.price,

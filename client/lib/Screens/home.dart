@@ -17,37 +17,37 @@ class HomePage extends StatelessWidget {
     Item(
         name: 'Pacific Organic Chicken and Mutton Soup',
         price: 400,
-        offer: 10,
+        cost: 500,
         image:
             'https://www.pacificfoods.com/wp-content/uploads/2019/03/Organic-Chicken-Wild-Rice-Soup-17.6oz-1.png'),
     Item(
         name: 'Double Horse Rice Sevai 2 Kg',
         price: 299,
-        offer: 10,
+        cost: 320,
         image:
             'https://www.pacificfoods.com/wp-content/uploads/2019/03/Organic-Chicken-Wild-Rice-Soup-17.6oz-1.png'),
     Item(
         name: 'Delhi Basmathi Rice 5 Kg',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://www.sbl1972.com/images/products/edited/delhi-dubar-rice.png'),
     Item(
         name: 'Snickers',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
     Item(
         name: 'Snickers',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
     Item(
         name: 'Snickers',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png')
   ];
@@ -56,37 +56,37 @@ class HomePage extends StatelessWidget {
     Item(
         name: 'Snickers Pack of 20',
         price: 400,
-        offer: 30,
+        cost: 430,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
     Item(
         name: 'Double Horse Rice Sevai 2 Kg',
         price: 299,
-        offer: 10,
+        cost: 320,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
     Item(
         name: 'Delhi Basmathi Rice 5 Kg',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://www.sbl1972.com/images/products/edited/delhi-dubar-rice.png'),
     Item(
         name: 'Snickers',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
     Item(
         name: 'Snickers',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
     Item(
         name: 'Snickers',
         price: 20,
-        offer: 30,
+        cost: 30,
         image:
             'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png')
   ];

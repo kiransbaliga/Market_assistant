@@ -31,14 +31,13 @@ class OfferItem extends StatelessWidget {
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
                     Text(
-                      '${item.offer.ceil()}% Off',
+                      '${(((item.cost - item.price) / item.cost) * 100).ceil()}% Off',
                       style: TextStyle(color: Colors.green, fontSize: 18),
                     ),
                     RichText(
                         text: TextSpan(children: [
                       TextSpan(
-                        text:
-                            '₹${((100 / (100 - item.offer)) * item.price).ceil()} ',
+                        text: '₹${(item.cost).ceil()} ',
                         style: TextStyle(
                             decoration: TextDecoration.lineThrough,
                             color: Colors.grey[700],

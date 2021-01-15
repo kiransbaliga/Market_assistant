@@ -77,7 +77,16 @@ class Account extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, 'cart');
                   },
-                )
+                ),
+                if (user.signincheck())
+                  ListTile(
+                    title: Text('Sign Out'),
+                    leading: Icon(Icons.logout),
+                    onTap: () {
+                      user.logout();
+                      Navigator.pop(context);
+                    },
+                  )
               ],
             ),
           ),

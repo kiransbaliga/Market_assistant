@@ -8,8 +8,9 @@ import 'package:markus/to_Database/dbMethods.dart';
 import 'package:markus/values.dart';
 
 //packages
-import 'package:dropdown_search/dropdown_search.dart';
-import 'package:email_validator/email_validator.dart';
+// import 'package:dropdown_search/dropdown_search.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+// import 'package:email_validator/email_validator.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -22,15 +23,14 @@ class _SigninState extends State<Signin> {
   void _signin() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      user.signupuser(_name, _email, 'ithanu', _password);
+      user.signupuser(_name, _email, _username, _password);
       Navigator.pop(context);
     } else
       print("Fail");
   }
 
   TextEditingController tc = TextEditingController();
-  String _password, _name, _confpassword, _email, _country, _city;
-  List<String> items = cities;
+  String _password, _name, _username, _email, _country, _city;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +54,7 @@ class _SigninState extends State<Signin> {
                 height: 60,
                 child: Center(
                   child: Text(
-                    'Sign in',
+                    'Sign up',
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
@@ -63,9 +63,10 @@ class _SigninState extends State<Signin> {
                 margin: EdgeInsets.symmetric(horizontal: 30),
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
                 decoration: BoxDecoration(
-                    color: colors[3], borderRadius: BorderRadius.circular(15)),
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.circular(15)),
                 width: double.infinity,
-                height: 450,
+                height: 500,
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -77,8 +78,15 @@ class _SigninState extends State<Signin> {
                         },
                       ),
                       Field(
+                        'Name',
                         onp: (val) {
                           _name = val;
+                        },
+                      ),
+                      Field(
+                        'Username',
+                        onp: (val) {
+                          _username = val;
                         },
                       ),
                       PassField(
@@ -89,7 +97,9 @@ class _SigninState extends State<Signin> {
                         },
                       ),
                       ConfPassField(
-                        name: tc.text ?? '',
+                        tc: tc,
+                        // control:_confirmPass,
+                        // name: tc.text ?? '',
                         onp: (val) {
                           _password = val;
                         },
@@ -110,11 +120,12 @@ class _SigninState extends State<Signin> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         child: Text(
-                          'Signin',
+                          'Sign up',
                           style: TextStyle(color: Colors.white, fontSize: 19),
                         ),
                         color: colors[1],
                         onPressed: () {
+                          // setState(() {});
                           _signin();
                         },
                       )
@@ -148,8 +159,9 @@ class _SigninState extends State<Signin> {
 }
 
 class Field extends StatelessWidget {
+  final String text;
   final Function onp;
-  Field({this.onp});
+  Field(this.text, {this.onp});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -157,8 +169,8 @@ class Field extends StatelessWidget {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         suffixIcon: Icon(Icons.person),
-        hintText: 'Name',
-        labelText: 'Name',
+        hintText: text,
+        labelText: text,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
       ),
       onChanged: onp,
@@ -172,8 +184,7 @@ class MailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (email) =>
-          EmailValidator.validate(email) ? null : "Invalid email address",
+      validator: EmailValidator(errorText: 'enter a valid email address'),
       onSaved: onp,
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
@@ -197,12 +208,18 @@ class PassField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: control,
-      validator: (password) {
-        if (password.length < 8)
-          return 'Password should be atleast 8 characters long';
-        else
-          return null;
-      },
+      validator: MultiValidator([
+        RequiredValidator(errorText: 'Password is required'),
+        MinLengthValidator(8, errorText: 'Should be at least 8 digits long'),
+        PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+            errorText: 'Should have atleast one special character'),
+        PatternValidator(r'(?=.*?[A-Z])',
+            errorText: 'Should have atleast one uppercase character'),
+        PatternValidator(r'(?=.*?[a-z])',
+            errorText: 'Should have atleast one lowerercase character'),
+        PatternValidator(r'(?=.*?[0-9])',
+            errorText: 'Should have atleast one digit'),
+      ]),
       onSaved: onp,
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -218,14 +235,14 @@ class PassField extends StatelessWidget {
 }
 
 class ConfPassField extends StatelessWidget {
-  final String name;
+  final tc;
   final Function onp;
-  ConfPassField({this.name, this.onp});
+  ConfPassField({this.onp, this.tc});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (password) {
-        if (name.compareTo(password) == 0)
+        if (tc.text != password)
           return 'Password Mismatch';
         else
           return null;

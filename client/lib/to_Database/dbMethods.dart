@@ -30,6 +30,15 @@ class DbMethods {
     _username = userdata['user']['username'];
   }
 
+  void logout() async {
+    await logoutfromsql();
+    _token = '';
+    _userid = '';
+    _name = '';
+    _email = '';
+    _username = '';
+  }
+
   void signupuser(
       String name, String email, String username, String password) async {
     Response r = await post(url + '/api/register',

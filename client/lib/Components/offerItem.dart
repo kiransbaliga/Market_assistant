@@ -3,13 +3,22 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:markus/Objects/itemclass.dart';
 import 'package:markus/values.dart';
+import 'package:markus/Screens/itemDetails.dart';
 
 class OfferItem extends StatelessWidget {
   final Item item;
   OfferItem(this.item);
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return InkWell(
+      onTap:(){
+         Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) {
+            return ItemDetail(item);
+          },
+        ));
+      },
+      child:Card(
       margin: EdgeInsets.all(8),
       color: Colors.black,
       child: Container(
@@ -60,6 +69,6 @@ class OfferItem extends StatelessWidget {
               Expanded(child: Image.network(item.image)),
             ],
           )),
-    );
+    ));
   }
 }

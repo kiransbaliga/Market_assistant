@@ -54,7 +54,7 @@ Future<void> login(String token, String userid, String name, String email,
   );
 }
 
-Future<void> deleteEvent() async {
+Future<void> logoutfromsql() async {
   final Database db = database;
 
   await db.delete('markustable');

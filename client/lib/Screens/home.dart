@@ -9,88 +9,11 @@ import 'package:markus/Components/homeScreenItem.dart';
 import 'package:markus/Components/offerItem.dart';
 import 'package:markus/Components/sliverAppBar.dart';
 import 'package:markus/Objects/itemclass.dart';
+import 'package:markus/items.dart';
 import 'package:markus/to_Database/dbMethods.dart';
 import 'package:markus/values.dart';
 
 class HomePage extends StatelessWidget {
-  final List<Item> _offers = [
-    Item(
-        name: 'Pacific Organic Chicken and Mutton Soup',
-        price: 400,
-        cost: 500,
-        image:
-            'https://www.pacificfoods.com/wp-content/uploads/2019/03/Organic-Chicken-Wild-Rice-Soup-17.6oz-1.png'),
-    Item(
-        name: 'Double Horse Rice Sevai 2 Kg',
-        price: 299,
-        cost: 320,
-        image:
-            'https://www.pacificfoods.com/wp-content/uploads/2019/03/Organic-Chicken-Wild-Rice-Soup-17.6oz-1.png'),
-    Item(
-        name: 'Delhi Basmathi Rice 5 Kg',
-        price: 20,
-        cost: 30,
-        image:
-            'https://www.sbl1972.com/images/products/edited/delhi-dubar-rice.png'),
-    Item(
-        name: 'Snickers',
-        price: 20,
-        cost: 30,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
-    Item(
-        name: 'Snickers',
-        price: 20,
-        cost: 30,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
-    Item(
-        name: 'Snickers',
-        price: 20,
-        cost: 30,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png')
-  ];
-
-  final List<Item> _recommends = [
-    Item(
-        name: 'Snickers Pack of 20',
-        price: 400,
-        cost: 430,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
-    Item(
-        name: 'Double Horse Rice Sevai 2 Kg',
-        price: 299,
-        cost: 320,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
-    Item(
-        name: 'Delhi Basmathi Rice 5 Kg',
-        price: 20,
-        cost: 30,
-        image:
-            'https://www.sbl1972.com/images/products/edited/delhi-dubar-rice.png'),
-    Item(
-        name: 'Snickers',
-        price: 20,
-        cost: 30,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
-    Item(
-        name: 'Snickers',
-        price: 20,
-        cost: 30,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png'),
-    Item(
-        name: 'Snickers',
-        price: 20,
-        cost: 30,
-        image:
-            'https://paradisealacarte.com/wp-content/uploads/2016/10/0350.png')
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,12 +31,12 @@ class HomePage extends StatelessWidget {
                     color: Color(0xff1c1c1c),
                     height: 200,
                     child: Swiper(
-                      itemCount: _offers.length,
+                      itemCount: offers.length,
                       scrollDirection: Axis.horizontal,
                       autoplay: true,
                       autoplayDelay: 3000,
                       itemBuilder: (BuildContext context, int index) {
-                        return OfferItem(_offers[index]);
+                        return OfferItem(items[offers[index]]);
                       },
                     )),
                 Padding(
@@ -143,9 +66,9 @@ class HomePage extends StatelessWidget {
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 20,
+                      itemCount: recommends.length,
                       itemBuilder: (context, index) {
-                        return HomeScreenItem(_recommends[index]);
+                        return HomeScreenItem(items[recommends[index]]);
                       },
                     )),
                 Padding(
@@ -171,9 +94,9 @@ class HomePage extends StatelessWidget {
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 20,
+                      itemCount: popular.length,
                       itemBuilder: (context, index) {
-                        return HomeScreenItem(_recommends[index]);
+                        return HomeScreenItem(items[popular[index]]);
                       },
                     )),
                 Padding(
@@ -202,9 +125,9 @@ class HomePage extends StatelessWidget {
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 20,
+                      itemCount: recent.length,
                       itemBuilder: (context, index) {
-                        return HomeScreenItem(_recommends[index]);
+                        return HomeScreenItem(items[recent[index]]);
                       },
                     )),
                 Padding(
@@ -230,9 +153,9 @@ class HomePage extends StatelessWidget {
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 20,
+                      itemCount: latest.length,
                       itemBuilder: (context, index) {
-                        return HomeScreenItem(_recommends[index]);
+                        return HomeScreenItem(items[latest[index]]);
                       },
                     )),
                 Padding(
@@ -258,9 +181,9 @@ class HomePage extends StatelessWidget {
                     height: 250,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 20,
+                      itemCount: discover.length,
                       itemBuilder: (context, index) {
-                        return HomeScreenItem(_recommends[index]);
+                        return HomeScreenItem(items[discover[index]]);
                       },
                     )),
               ],

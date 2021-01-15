@@ -11,7 +11,12 @@ List<Item> cartItems = [
       cost: 36)
 ];
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
+  @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +41,12 @@ class CartScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                for (Item it in cartItems) CartItem(it),
+                for (Item it in cartItems)
+                  CartItem(it, () {
+                    setState(() {
+                      cartItems.remove(it);
+                    });
+                  }),
               ],
             ),
           ),

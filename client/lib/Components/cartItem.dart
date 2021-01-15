@@ -4,7 +4,8 @@ import 'package:markus/Screens/itemDetails.dart';
 
 class CartItem extends StatefulWidget {
   final Item _item;
-  CartItem(this._item);
+  final Function onRemoved;
+  CartItem(this._item, this.onRemoved);
   @override
   _CartItemState createState() => _CartItemState();
 }
@@ -129,7 +130,7 @@ class _CartItemState extends State<CartItem> {
                                   borderRadius: BorderRadius.circular(10)),
                               color: Colors.grey[300],
                               child: Text('Remove'),
-                              onPressed: () {},
+                              onPressed: widget.onRemoved,
                             )
                           ],
                         ),

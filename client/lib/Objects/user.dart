@@ -1,7 +1,3 @@
-class User {
-  String _name;
-
-  String getname() {
-    return _name;
-  }
+class Rating {
+  int brand, offers, price, quality;
 }

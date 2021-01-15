@@ -1,6 +1,7 @@
 import 'dart:convert';
 // import 'dart:html';
 import 'package:http/http.dart';
+import 'package:markus/Objects/user.dart';
 import 'package:markus/to_Database/sqlStorage.dart';
 
 class DbMethods {
@@ -28,6 +29,17 @@ class DbMethods {
     _name = userdata['user']['name'];
     _email = userdata['user']['email'];
     _username = userdata['user']['username'];
+  }
+
+  void submitrating(Rating rating) async {
+    //  Response r = await post(url + '/api/user/rating',
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: jsonEncode({
+    //       'brand': rating.brand,
+    //       'quality': rating.quality,
+    //        'offers': rating.offers,
+    //       'price': rating.price
+    //     }));
   }
 
   void logout() async {

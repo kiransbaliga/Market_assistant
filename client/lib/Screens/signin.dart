@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 //other files
-import 'package:markus/Objects/user.dart';
+import 'package:markus/Screens/Survey/intro.dart';
 import 'package:markus/cities.dart';
 import 'package:markus/to_Database/dbMethods.dart';
 import 'package:markus/values.dart';
@@ -24,7 +24,12 @@ class _SigninState extends State<Signin> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       user.signupuser(_name, _email, _username, _password);
-      Navigator.pop(context);
+
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) {
+          return Intro();
+        },
+      ));
     } else
       print("Fail");
   }

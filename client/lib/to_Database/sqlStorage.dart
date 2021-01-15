@@ -37,7 +37,7 @@ void closedb() async {
 Future<void> login(String token, String userid, String name, String email,
     String username) async {
   final Database db = database;
-
+  await db.delete('markustable');
   await db.insert(
     'markustable',
     {

@@ -134,13 +134,13 @@ class ItemDetail extends StatelessWidget {
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                        // Text(
-                        //   'Customer Ratings',
-                        //   style: TextStyle(
-                        //     fontSize: 18,
-                        //   ),
-                        // ),
-                        // Text('No ratings till Now...')
+                        Text(
+                          'Customer Ratings',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                        Text('No ratings till Now...')
                       ])
                 : Container(
                     // height: 250,
@@ -211,7 +211,6 @@ class ItemDetail extends StatelessWidget {
                       ],
                     ),
                   ),
-            if (_item.specs.keys.length != 0)
               Padding(
                 padding: const EdgeInsets.only(bottom: 10, top: 10),
                 child: Text(

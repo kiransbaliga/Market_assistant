@@ -17,7 +17,34 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       floating: true,
+      leading: IconButton(
+          icon: Icon(Icons.menu, color: Colors.white, size: 30),
+          onPressed: () {
+            Navigator.of(context).push(PageRouteBuilder(
+                pageBuilder: (context, animation, anotherAnimation) {
+                  return Menu();
+                },
+                transitionDuration: Duration(milliseconds: 500),
+                transitionsBuilder:
+                    (context, animation, anotherAnimation, child) {
+                  animation = CurvedAnimation(
+                      curve: Curves.easeInBack, parent: animation);
+                  return Align(
+                    child: SlideTransition(
+                      position:
+                          Tween(begin: Offset(-1.0, 0.0), end: Offset(0.0, 0.0))
+                              .animate(animation),
+                      child: child,
+                    ),
+                  );
+                }));
+          }),
       actions: [
+        IconButton(
+            icon: Icon(Icons.shopping_cart, color: Colors.white, size: 30),
+            onPressed: () {
+              Navigator.pushNamed(context, 'cart');
+            }),
         FlatButton(
           child: CircleAvatar(
             backgroundColor: Colors.white,
@@ -35,28 +62,6 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
             Navigator.pushNamed(context, 'account');
           },
         ),
-        IconButton(
-            icon: Icon(Icons.menu, color: Colors.white, size: 30),
-            onPressed: () {
-              Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, anotherAnimation) {
-                    return Menu();
-                  },
-                  transitionDuration: Duration(milliseconds: 500),
-                  transitionsBuilder:
-                      (context, animation, anotherAnimation, child) {
-                    animation = CurvedAnimation(
-                        curve: Curves.easeInBack, parent: animation);
-                    return Align(
-                      child: SlideTransition(
-                        position: Tween(
-                                begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0))
-                            .animate(animation),
-                        child: child,
-                      ),
-                    );
-                  }));
-            })
       ],
       backgroundColor: colors[3],
       shape: RoundedRectangleBorder(
@@ -71,7 +76,6 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
           ),
           background: Container(
             decoration: BoxDecoration(
-                
                 image: DecorationImage(
                     image: AssetImage(
                       'assets/face.gif',

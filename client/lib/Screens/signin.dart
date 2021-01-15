@@ -22,7 +22,7 @@ class _SigninState extends State<Signin> {
   void _signin() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      DbMethods().signupuser(_name, _email, 'ithanuuser', _password);
+      user.signupuser(_name, _email, 'ithanu', _password);
       Navigator.pop(context);
     } else
       print("Fail");

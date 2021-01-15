@@ -11,7 +11,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   void _login() {
     print('check 1');
-    DbMethods().loginuser(_email, _password);
+    user.loginuser(_email, _password);
     Navigator.pop(context);
   }
 

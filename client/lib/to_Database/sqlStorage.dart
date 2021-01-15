@@ -16,6 +16,9 @@ Future<void> openLocalStorage() async {
       db.execute(
         "CREATE TABLE IF NOT EXISTS markustable (id INTEGER PRIMARY KEY, token TEXT, user_id TEXT,name TEXT,email TEXT,username TEXT)",
       );
+      db.execute(
+        "CREATE TABLE IF NOT EXISTS carttable (id INTEGER PRIMARY KEY, name TEXT,cost TEXT,price TEXT,email TEXT,username TEXT)",
+      );
     },
     // Set the version. This executes the onCreate function and provides a
     // path to perform database upgrades and downgrades.
@@ -37,7 +40,7 @@ void closedb() async {
 Future<void> login(String token, String userid, String name, String email,
     String username) async {
   final Database db = database;
-
+  await db.delete('markustable');
   await db.insert(
     'markustable',
     {

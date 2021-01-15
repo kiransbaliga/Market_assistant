@@ -1,11 +1,20 @@
 class Item {
-  Item({this.name, this.price, this.cost, this.image});
+  Item(
+      {this.serialnumber,
+      this.name,
+      this.price,
+      this.cost,
+      this.image,
+      this.adurl = 'https://youtu.be/NOTlRkO3Syk',
+      this.rating = const {},
+      this.specs = const {}});
+  int serialnumber;
   String name;
   double price;
   double cost;
   String image;
-  String companyUrl = '';
-  Map<double, double> rating = {1: 0, 2: 0, 3: 0, 4: 1, 5: 0};
+  String adurl;
+  Map<double, double> rating;
   Map<String, Map<String, String>> specs = {
     'Taste': {
       'Sweet': 'Yes',

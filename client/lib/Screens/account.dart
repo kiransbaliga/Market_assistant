@@ -35,9 +35,9 @@ class Account extends StatelessWidget {
                     image: AssetImage('assets/accountImage.png'),
                   ),
                 ),
-                DbMethods().signincheck()
+                user.signincheck()
                     ? Text(
-                        DbMethods().getname(),
+                        user.getname(),
                         style: TextStyle(color: Colors.black, fontSize: 30),
                       )
                     : Row(
@@ -70,7 +70,14 @@ class Account extends StatelessWidget {
                             color: colors[3],
                           )
                         ],
-                      )
+                      ),
+                ListTile(
+                  title: Text('Cart'),
+                  leading: Icon(Icons.shopping_cart),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'cart');
+                  },
+                )
               ],
             ),
           ),

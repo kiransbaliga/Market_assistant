@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     user.initialise();
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Markus',
       theme: ThemeData(
         fontFamily: 'Poppins',
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        //https://meet.google.com/xhi-hvvn-rvj
+        
         'home': (context) => HomePage(),
         'settings': (context) => Settings(),
         'account': (context) => Account(),

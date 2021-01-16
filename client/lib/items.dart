@@ -1,4 +1,5 @@
 import 'package:markus/Objects/itemclass.dart';
+import 'package:markus/to_Database/dbMethods.dart';
 
 List<int> offers = [0, 1, 2, 3, 4];
 List<int> recommends = [6, 10, 11, 12];
@@ -6,6 +7,49 @@ List<int> popular = [6, 3, 4, 1, 8];
 List<int> recent = [12, 8, 2, 0, 1, 4, 7];
 List<int> latest = [7, 8, 9, 10, 11, 12];
 List<int> discover = [10, 11, 5, 9, 2, 1, 6];
+
+void assign(String cls) {
+  if (cls == '["classA"]') {
+    discover = [10, 11, 3, 4, 1];
+    offers = [3, 7, 4, 1, 9, 8];
+    recommends = [5, 7, 2, 6];
+    popular = [4, 7, 8, 1, 3, 5, 9];
+    recent = [12, 4, 6, 8, 5, 9, 10];
+    latest = [12, 11, 5, 3, 7, 10];
+  }
+  if (cls == '["classB"]') {
+    offers = [10, 11, 3, 4, 1];
+    recommends = [3, 7, 4, 1, 9, 8];
+    recent = [5, 7, 2, 6];
+    discover = [4, 7, 8, 1, 3, 5, 9];
+    latest = [12, 4, 6, 8, 5, 9, 10];
+    popular = [12, 11, 5, 3, 7, 10];
+  }
+  if (cls == '["classC"]') {
+    latest = [10, 11, 3, 4, 1];
+    discover = [3, 7, 4, 1, 9, 8];
+    offers = [5, 7, 2, 6];
+    recommends = [4, 7, 8, 1, 3, 5, 9];
+    popular = [12, 4, 6, 8, 5, 9, 10];
+    recent = [12, 11, 5, 3, 7, 10];
+  }
+  if (cls == '["classD"]') {
+    recent = [10, 11, 3, 4, 1];
+    latest = [3, 7, 4, 1, 9, 8];
+    discover = [5, 7, 2, 6];
+    offers = [4, 7, 8, 1, 3, 5, 9];
+    recommends = [12, 4, 6, 8, 5, 9, 10];
+    popular = [12, 11, 5, 3, 7, 10];
+  }
+  if (cls == '["classE"]') {
+    recommends = [10, 6, 3, 4, 1];
+    popular = [3, 2, 4, 1, 9, 8];
+    recent = [5, 7, 2, 3];
+    latest = [2, 7, 8, 1, 3, 5, 9];
+    discover = [12, 4, 6, 8, 5, 9, 10];
+    offers = [6, 11, 5, 3, 7, 10];
+  }
+}
 
 List<Item> items = [
   Item(

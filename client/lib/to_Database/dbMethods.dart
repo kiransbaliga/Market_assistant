@@ -2,11 +2,17 @@ import 'dart:convert';
 // import 'dart:html';
 import 'package:http/http.dart';
 import 'package:markus/Objects/user.dart';
+import 'package:markus/items.dart';
 import 'package:markus/to_Database/sqlStorage.dart';
 
 class DbMethods {
   String url = 'https://market-ai-markus.herokuapp.com';
-  String _token = '', _userid = '', _name = '', _email = '', _username = '';
+  String _token = '',
+      _userid = '',
+      _name = '',
+      _email = '',
+      _username = '',
+      _clas = '["ClassE"]';
   void loginuser(String email, String password) async {
     String basicAuth = 'Basic ' + base64Encode(utf8.encode('$email:$password'));
     Response r =
@@ -32,14 +38,30 @@ class DbMethods {
   }
 
   void submitrating(Rating rating) async {
-    //  Response r = await post(url + '/api/user/rating',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: jsonEncode({
-    //       'brand': rating.brand,
-    //       'quality': rating.quality,
-    //        'offers': rating.offers,
-    //       'price': rating.price
-    //     }));
+    Response r = await post(url + '/api/user/rating',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $_token'
+        },
+        body: jsonEncode({
+          'brand': rating.brand,
+          'quality': rating.quality,
+          'offers': rating.offers,
+          'price': rating.price
+        }));
+    print(r.body);
+    Response r2 = await get(
+      url + '/api/user/shoppinglist',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $_token'
+      },
+    );
+    print(r2.body);
+    Map theClass = json.decode(r2.body);
+
+    _clas = theClass["class"];
+    assign(_clas);
   }
 
   void logout() async {
@@ -111,6 +133,10 @@ class DbMethods {
   String getname() {
     return _name;
   }
+
+  // String getclass() {
+  //   return _clas[7];
+  // }
 }
 
 DbMethods user = DbMethods();

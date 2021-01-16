@@ -78,6 +78,34 @@ class Account extends StatelessWidget {
                     Navigator.pushNamed(context, 'cart');
                   },
                 ),
+                ListTile(
+                  title: Text('View Profile'),
+                  leading: Icon(Icons.person),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'cart');
+                  },
+                ),
+                ListTile(
+                  title: Text('Edit Profile'),
+                  leading: Icon(Icons.edit),
+                  onTap: () {
+                    // Navigator.pushNamed(context, 'cart');
+                  },
+                ),
+                ListTile(
+                  title: Text('Take a survey'),
+                  leading: Icon(Icons.notes),
+                  onTap: () {
+                    // Navigator.pushNamed(context, 'cart');
+                  },
+                ),
+                ListTile(
+                  title: Text('Cart'),
+                  leading: Icon(Icons.shopping_cart),
+                  onTap: () {
+                    // Navigator.pushNamed(context, 'cart');
+                  },
+                ),
                 if (user.signincheck())
                   ListTile(
                     title: Text('Sign Out'),
